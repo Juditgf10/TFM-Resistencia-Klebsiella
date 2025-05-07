@@ -23,14 +23,30 @@ Los datos utilizados en este proyecto provienen de la plataforma **BVBRC (PATRIC
 - **Jupyter Notebook**: Entorno de análisis y experimentación.
 - **Pandas & NumPy**: Manipulación y procesamiento de datos.
 - **Biopython**: Análisis de secuencias genómicas.
-- **Scikit-learn & XGBoost**: Implementación de modelos de machine learning.
+- **Scikit-learn:** Implementación de modelos de *machine learning* (Random Forest, SVM), división de datos y métricas de evaluación.
+- **XGBoost:** Implementación del modelo de *gradient boosting* XGBoost.
+- **imblearn:** Biblioteca para técnicas de manejo de desbalance de clases (ADASYN).
 - **Matplotlib & Seaborn**: Visualización de datos.
 - **GitHub**: Control de versiones y almacenamiento del código.
 
+📌 Estado Actual del Proyecto (Mayo 2025)
+
+En la fase actual del proyecto, se han completado las siguientes etapas:
+
+1.  **Obtención y Preprocesamiento de Datos:** Se han descargado, limpiado y preparado los datos genómicos y fenotípicos de *Klebsiella pneumoniae* para el modelado. Se ha generado la matriz de características (presencia/ausencia de genes) y se ha dividido el dataset para entrenamiento y prueba.
+2.  **Entrenamiento Inicial de Modelos:** Se han entrenado tres modelos de clasificación para predecir la resistencia a carbapenémicos:
+    * **Random Forest:** Entrenado con datos sobremuestreados utilizando ADASYN y optimizado por *recall*.
+    * **Support Vector Machines (SVM):** Entrenado con el parámetro `class_weight='balanced'` para abordar el desbalance de clases, optimizado por F1-score.
+    * **XGBoost:** Entrenado y optimizado por la métrica *recall*.
+
+Los resultados preliminares en el conjunto de prueba indican una *accuracy* general alrededor del 77-78% para los tres modelos. Sin embargo, el *recall* para la clase resistente (el objetivo principal) es bajo en todos los modelos, lo que sugiere una dificultad para identificar correctamente las cepas resistentes.
+
+
 ## 📌 Próximos Pasos
-🔄 Análisis exploratorio y visualización  
-📈 Entrenamiento y evaluación de modelos  
-📢 Publicación de resultados y documentación  
+🔄 **Análisis de Resultados Detallado:** Evaluar en profundidad los resultados obtenidos, incluyendo el análisis de la importancia de las características (genes).
+📈 **Experimentación con Mejoras:** Explorar técnicas avanzadas para el manejo del desbalance de clases, ingeniería de características (e.g., combinaciones de genes), y métodos de selección de características más informados.
+ **Ajuste Fino de Modelos:** Realizar un ajuste más exhaustivo de los hiperparámetros de los modelos.
+📢 **Documentación:** Continuar documentando el proceso y los hallazgos en los notebooks y en el informe del TFM. 
 
 ## 📜 Licencia
 Este proyecto es de uso académico y se publica bajo la licencia [MIT](LICENSE).
