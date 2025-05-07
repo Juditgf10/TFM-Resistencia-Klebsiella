@@ -29,7 +29,7 @@ Los datos utilizados en este proyecto provienen de la plataforma **BVBRC (PATRIC
 - **Matplotlib & Seaborn**: Visualización de datos.
 - **GitHub**: Control de versiones y almacenamiento del código.
 
-📌 Estado Actual del Proyecto (Mayo 2025)
+## 📌 Estado Actual del Proyecto (Mayo 2025)
 
 En la fase actual del proyecto, se han completado las siguientes etapas:
 
