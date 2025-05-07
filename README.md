@@ -44,8 +44,10 @@ Los resultados preliminares en el conjunto de prueba indican una *accuracy* gene
 
 ## 📌 Próximos Pasos
 🔄 **Análisis de Resultados Detallado:** Evaluar en profundidad los resultados obtenidos, incluyendo el análisis de la importancia de las características (genes).
+
 📈 **Experimentación con Mejoras:** Explorar técnicas avanzadas para el manejo del desbalance de clases, ingeniería de características (e.g., combinaciones de genes), y métodos de selección de características más informados.
  **Ajuste Fino de Modelos:** Realizar un ajuste más exhaustivo de los hiperparámetros de los modelos.
+ 
 📢 **Documentación:** Continuar documentando el proceso y los hallazgos en los notebooks y en el informe del TFM. 
 
 ## 📜 Licencia
