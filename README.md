@@ -29,26 +29,46 @@ Los datos utilizados en este proyecto provienen de la plataforma **BVBRC (PATRIC
 - **Matplotlib & Seaborn**: Visualización de datos.
 - **GitHub**: Control de versiones y almacenamiento del código.
 
-## 📌 Estado Actual del Proyecto (Mayo 2025)
+## 📈 Resultados Principales
 
-En la fase actual del proyecto, se han completado las siguientes etapas:
+Se han entrenado y evaluado tres modelos de clasificación para predecir la resistencia a carbapenémicos en *K. pneumoniae*. La optimización se realizó mediante `GridSearchCV` utilizando validación cruzada estratificada (`StratifiedKFold`) y técnicas para el desbalance de clases.
 
-1.  **Obtención y Preprocesamiento de Datos:** Se han descargado, limpiado y preparado los datos genómicos y fenotípicos de *Klebsiella pneumoniae* para el modelado. Se ha generado la matriz de características (presencia/ausencia de genes) y se ha dividido el dataset para entrenamiento y prueba.
-2.  **Entrenamiento Inicial de Modelos:** Se han entrenado tres modelos de clasificación para predecir la resistencia a carbapenémicos:
-    * **Random Forest:** Entrenado con datos sobremuestreados utilizando ADASYN y optimizado por *recall*.
-    * **Support Vector Machines (SVM):** Entrenado con el parámetro `class_weight='balanced'` para abordar el desbalance de clases, optimizado por F1-score.
-    * **XGBoost:** Entrenado y optimizado por la métrica *recall*.
+Los resultados en el conjunto de prueba son los siguientes:
 
-Los resultados preliminares en el conjunto de prueba indican una *accuracy* general alrededor del 77-78% para los tres modelos. Sin embargo, el *recall* para la clase resistente (el objetivo principal) es bajo en todos los modelos, lo que sugiere una dificultad para identificar correctamente las cepas resistentes.
+* **Random Forest:**
+    * Optimizado por: *Recall*
+    * AUC: **0.55**
+    * Accuracy general: ~77-78%
+* **Support Vector Machines (SVM):**
+    * Optimizado por: *Recall* (con `class_weight='balanced'`)
+    * AUC: **0.53**
+    * Accuracy general: ~77-78%
+* **XGBoost:**
+    * Optimizado por: F1-weighted (con `scale_pos_weight`)
+    * AUC: **0.54**
+    * Accuracy general: ~77-78%
 
+Las matrices de confusión y las curvas ROC detalladas para cada modelo se han generado y se encuentran en la carpeta `figures/`.
 
-## 📌 Próximos Pasos
-🔄 **Análisis de Resultados Detallado:** Evaluar en profundidad los resultados obtenidos, incluyendo el análisis de la importancia de las características (genes).
+## 🔍 Análisis y Discusión de Resultados
 
-📈 **Experimentación con Mejoras:** Explorar técnicas avanzadas para el manejo del desbalance de clases, ingeniería de características (e.g., combinaciones de genes), y métodos de selección de características más informados.
- **Ajuste Fino de Modelos:** Realizar un ajuste más exhaustivo de los hiperparámetros de los modelos.
- 
-📢 **Documentación:** Continuar documentando el proceso y los hallazgos en los notebooks y en el informe del TFM. 
+Los valores de AUC obtenidos para los tres modelos (0.55, 0.53, 0.54) son cercanos a 0.5, lo que indica que, a pesar de la optimización y el uso de técnicas de balanceo, los modelos tienen una capacidad limitada para discriminar de forma robusta entre las cepas resistentes y sensibles. Este resultado sugiere la alta complejidad en la relación genotipo-fenotipo de la resistencia a carbapenémicos, que podría no ser capturada completamente por las características o los modelos empleados en esta fase.
+
+La *accuracy* general, aunque moderada, es engañosa en contextos de desbalance de clases, y el bajo *recall* para la clase minoritaria (resistente) confirma la dificultad para identificar correctamente los casos de interés clínico. Sin embargo, el análisis de importancia de características (disponible en `figures/`) del modelo XGBoost ha permitido identificar genes clave que son influyentes en la predicción, lo que puede proporcionar valiosa información para futuras investigaciones biomédicas.
+
+## ✅ Conclusiones
+
+Este Trabajo Final de Máster ha sentado las bases para el desarrollo de modelos predictivos de resistencia a carbapenémicos en *Klebsiella pneumoniae*. A pesar de las limitaciones observadas en el rendimiento predictivo actual de los modelos (reflejado en los valores AUC), se ha establecido un pipeline para el preprocesamiento de datos genómicos y la evaluación de modelos de Machine Learning. Los hallazgos subrayan la necesidad de enfoques más complejos y un conocimiento más profundo de los mecanismos moleculares de resistencia.
+
+## ➡️ Futuras Mejoras
+
+Para avanzar en esta línea de investigación, se proponen las siguientes mejoras:
+
+* **Ingeniería de Características Avanzada:** Explorar características más allá de la presencia/ausencia de genes, como polimorfismos de un solo nucleótido (SNPs), análisis de promotores, y la integración de datos de expresión génica.
+* **Exploración de Modelos Más Complejos:** Investigar el potencial de modelos de Deep Learning para capturar patrones más intrincados en secuencias genómicas.
+* **Validación Externa:** Evaluar los modelos con conjuntos de datos independientes y de diferentes orígenes para asegurar su generalización.
+
+---
 
 ## 📜 Licencia
 Este proyecto es de uso académico y se publica bajo la licencia [MIT](LICENSE).
