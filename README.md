@@ -36,12 +36,8 @@ Los datos utilizados en este proyecto provienen de la plataforma **BVBRC (PATRIC
 git clone https://github.com/<usuario>/TFM-Resistencia-Klebsiella.git
 cd TFM-Resistencia-Klebsiella
 
-# Instalar dependencias (lista inline)
-pip install \
-    pandas>=2.0 numpy>=1.25 scikit-learn>=1.4 \
-    xgboost>=2.0 imbalanced-learn>=0.12 biopython>=1.83 \
-    matplotlib>=3.9 seaborn>=0.13 shap>=0.45 \
-    jupyterlab>=4.0 joblib>=1.4
+# Instalar dependencias
+pip install -r requirements.txt
 ```
 
 
